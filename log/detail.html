@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具站</title>
+    <style>
+        .content {
+            background-color: #fff9f0;
+            width: 100%;
+        }
+
+        .tools {
+            width: 66%;
+            margin: auto;
+        }
+
+        .tools-item {
+            margin-bottom: 20px;
+            padding: 0px 10px;
+            box-shadow: 0 .1875rem .0625rem -.125rem rgba(0, 0, 0, .2), 0 .125rem .125rem 0 rgba(0, 0, 0, .14), 0 .0625rem .3125rem 0 rgba(0, 0, 0, .12);
+        }
+
+        .item-category {
+            margin-bottom: 10px;
+        }
+
+        .category-tool-name {
+            width: 267px;
+            text-align: center;
+            border: 1rpx solid red;
+            background-color: navajowhite;
+            padding: 10px;
+        }
+
+        .category-tool-name span {
+            color: rgba(0, 0, 0, 0.87);
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1px;
+            line-height: normal;
+        }
+
+        article pre {
+            background-color: #eee;
+            border-left: 6px solid #00458b;
+            font-size: 1rem;
+            line-height: 1.4;
+            margin: 0 0 24px;
+            width: 100%;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="background-color:pink;">
+        <div class="header-title">工具箱-js函数</div>
+    </div>
+    <div class="content">
+        <div class="tools">
+            <div class="tools-item" style="background-color: gainsboro;">
+                <p>常用参考网站 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript </p>
+                <h2>
+                    常用时间日期函数
+                </h2>
+                <p>
+                <article>
+                    <h3>格式化时间</h3>
+                    <pre>
+                        <code>
+/**
+* @example  let crtTime = new Date(value);
+*           let fomatTime = dateFtt("yyyy-MM-dd hh:mm:ss",crtTime);
+**/                            
+function dateFtt(fmt,date)   
+{ //author: meizz   
+  var o = {   
+    "M+" : date.getMonth()+1,                 //月份   
+    "d+" : date.getDate(),                    //日   
+    "h+" : date.getHours(),                   //小时   
+    "m+" : date.getMinutes(),                 //分   
+    "s+" : date.getSeconds(),                 //秒   
+    "q+" : Math.floor((date.getMonth()+3)/3), //季度   
+    "S"  : date.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}
+                        </code>
+                    </pre>
+                    <h3>时间转时间戳</h3>
+                    <pre>
+                        <code>
+1） var timestamp1 = Date.parse(new Date());
+2） var timestamp2 = (new Date()).valueOf();
+3） var timestamp3 = new Date().getTime();
+4） var timetamp4 = Number(new Date()) 
+                        </code>
+                    </pre>
+                    <h3>时间戳转时间</h3>
+                    <pre>
+                        <code>
+var timestamp = 1527521052;
+var newDate = new Date();
+newDate.setTime(timestamp * 1000);
+console.log(newDate.toDateString());
+console.log(newDate.toGMTString());
+console.log(newDate.toISOString());
+console.log(newDate.toJSON());
+console.log(newDate.toLocaleDateString());
+console.log(newDate.toLocaleString());
+console.log(newDate.toLocaleTimeString());
+console.log(newDate.toString());
+console.log(newDate.toTimeString());
+console.log(newDate.toUTCString());
+                        </code>
+                    </pre>
+                </article>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+
+    </div>
+</body>
+
+</html>
